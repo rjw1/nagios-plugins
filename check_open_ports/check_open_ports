@@ -71,7 +71,7 @@ my $message;
 my $exit_code = 0;
 
 # I like the two ifs more than an if block, it keeps the sections together
-$exit_code = 2           if (@missing_tcp || @missing_udp);
+$exit_code = 1           if (@missing_tcp || @missing_udp);
 $message   = "Expected:" if (@missing_tcp || @missing_udp);
 $message  .= " TCP - @missing_tcp"  if @missing_tcp;
 $message  .= " UDP - @missing_udp" if @missing_udp;
@@ -121,8 +121,6 @@ Notes:
   This check doesn't understand binding ports to different ips. If the
   port is found on any interface it's considered open.
 
-  Debian SSH shows as being bound to IPv6 on a Debian fresh install. This
-  script only works on IPv4 ports.
 
 EOU
   exit 3;
